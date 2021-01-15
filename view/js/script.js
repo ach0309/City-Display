@@ -1,27 +1,39 @@
 //<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-var searchInput = document.getElementById('input');
+var button = document.getElementById("btn");
+var clrTables = document.getElementById('tables');
+var inputSearch = document.getElementById('tables');
 
-searchInput.addEventListener('input', (event) => {
-    const val = event.target.value;
-    working(val);
-    //console.log(val);
-    //if (val ) is not a letter continue
-})
+inputSearch.addEventListener('input', clear) {
+    clrTables = '';
+}
+
+function onClick($this){
+    var val = $this.previousElementSibling.value;
+    if(val && val.trim().length >0){
+        working(val);
+    } else {
+        notWorking(val);
+    }
+}
+
+
+function notWorking(input){
+    document.getElementById('modal-box').classList.add('.modal');
+    setTimeout(function(){ document.getElementById('modal-box').classList.remove('modal')}, 30);
+}
 
 function working(input){
     //fetch data from JSON URL
     var jsonResults = [];
     var stringURL = 'https://jsonmock.hackerrank.com/api/cities/?city=' + input;
 
-    //console.log(stringURL);
-
      
     $(function() {
         $.getJSON(stringURL, function(data) {
-            //console.log(data.data);
             var items='';
             var r= data.data;
+
             //get the amount of cities found
             var valLen = r.length;
             document.getElementById('numCities').innerHTML = valLen;
@@ -52,9 +64,3 @@ function working(input){
     });
 
 }
-
-
-//"i made some changes"
-
-//i also made changes R
-// let's see if this works

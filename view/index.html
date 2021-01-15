@@ -10,17 +10,15 @@
     
     <body>
         <!--HTML content goes here-->
-        <div >
-            <ul class='listGroup' id = "list"></ul>
-        </div>
 
-        <div class="modal" id="modal-box"> 
-        Please provide the valid input
+        <div class="modal" id="modal-box"> Please provide the valid input
         </div>
         
-        <input id="input" type="text"></input>
-        <button id="button">Search</button>
-
+        <div class="inputText">
+            <input id="input" type="text"></input>
+            <button onclick="onClick(this)" id = "btn">Search</button>    
+        </div> 
+      
          <div class="totalCount">Total cities found: 
              <span id="numCities"></span> 
         </div>
