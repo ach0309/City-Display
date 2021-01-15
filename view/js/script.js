@@ -2,11 +2,14 @@
 
 var button = document.getElementById("btn");
 var clrTables = document.getElementById('tables');
-var inputSearch = document.getElementById('tables');
+var inputSearch = document.getElementById('input');
 
-inputSearch.addEventListener('input', clear) {
-    clrTables = '';
-}
+
+//work on this!! Reset table every time a letter is typed
+inputSearch.addEventListener('input', (event)=> {
+    document.getElementById("tables").value = "";
+});
+
 
 function onClick($this){
     var val = $this.previousElementSibling.value;
