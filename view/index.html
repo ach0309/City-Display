@@ -11,7 +11,9 @@
     <body>
         <!--HTML content goes here-->
 
-        <div class="modal" id="modal-box"> Please provide the valid input
+        <div class="modal" id="modal-box"> 
+            <span class="message">Please provide the valid input</span> 
+            <button onclick= "okClick(ok)" class="okay-btn">OK</button> 
         </div>
         
         <div class="inputText">
@@ -23,7 +25,9 @@
              <span id="numCities"></span> 
         </div>
 
-         <div class="loader"></div>
+         <div class="loader">
+             <img src="js/loading.jpg" alt="">
+         </div>
          
          <table class="table" id = "tables">
             <tbody>

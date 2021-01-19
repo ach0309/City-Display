@@ -1,29 +1,33 @@
 //<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-var button = document.getElementById("btn");
-var clrTables = document.getElementById('tables');
 var inputSearch = document.getElementById('input');
+var button = document.getElementById("btn");
+var box = document.getElementById('modal-box');
+var ok = document.getElementById('okay-btn');
+
+box.style.visibility='hidden';
 
 
-//work on this!! Reset table every time a letter is typed
-inputSearch.addEventListener('input', (event)=> {
-    document.getElementById("tables").value = "";
-});
-
-
+//Reset table every time a letter is typed
+var letters = /^[A-Za-z]+$/;
 function onClick($this){
+    $("table").children().remove();
     var val = $this.previousElementSibling.value;
-    if(val && val.trim().length >0){
+    if(val && val.trim().length>0 && val!==''){
+        
+    } if (val.match(letters) ==="true"){
         working(val);
     } else {
         notWorking(val);
     }
 }
 
+function okClick($ok){
+    box.style.visibility ='hidden';
+}
 
 function notWorking(input){
-    document.getElementById('modal-box').classList.add('.modal');
-    setTimeout(function(){ document.getElementById('modal-box').classList.remove('modal')}, 30);
+    box.style.visibility='visible';
 }
 
 function working(input){
