@@ -17,7 +17,7 @@
         </div>
         
         <div class="inputText">
-            <input id="input" type="text"></input>
+            <input id="input" class="input" type="text" pattern ="/[a-zA-Z]/"></input>
             <button onclick="onClick(this)" id = "btn">Search</button>    
         </div> 
       
@@ -25,9 +25,7 @@
              <span id="numCities"></span> 
         </div>
 
-         <div class="loader">
-             <img src="js/loading.jpg" alt="">
-         </div>
+         <div class="loader" id = "loader"></div>
          
          <table class="table" id = "tables">
             <tbody>

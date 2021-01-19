@@ -1,35 +1,47 @@
 //<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-var inputSearch = document.getElementById('input');
+var searchInput = document.getElementById('input');
 var button = document.getElementById("btn");
 var box = document.getElementById('modal-box');
 var ok = document.getElementById('okay-btn');
+var load = document.getElementById('loader');
 
-box.style.visibility='hidden';
 
 
-//Reset table every time a letter is typed
-var letters = /^[A-Za-z]+$/;
 function onClick($this){
     $("table").children().remove();
-    var val = $this.previousElementSibling.value;
-    if(val && val.trim().length>0 && val!==''){
-        
-    } if (val.match(letters) ==="true"){
-        working(val);
-    } else {
-        notWorking(val);
+    let val = $this.previousElementSibling.value;
+    load.classList.add('active');
+    setTimeout(function(){load.classList.remove('active')}, 1000);
+    setTimeout(function(){validate(val)}, 1000);
+}
+
+function validate(a){
+    if (/^[a-zA-Z]*$/g.test(searchInput.value) && a!='') {
+        console.log(a);
+        working(a);
+    }
+    else{
+        //notWorking(a);
+        alert("Please provide the valid input");
     }
 }
 
+
+//Reset table/error message every time a letter is typed
 function okClick($ok){
     box.style.visibility ='hidden';
 }
+searchInput.addEventListener('input', (event) => {
+    okClick(input);
+})
 
+// when not Working
 function notWorking(input){
     box.style.visibility='visible';
 }
 
+//when working
 function working(input){
     //fetch data from JSON URL
     var jsonResults = [];

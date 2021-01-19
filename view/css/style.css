@@ -12,6 +12,10 @@
   animation: spin 2s linear infinite;
   display: none;
 }
+
+#loader.active{
+  display: block;
+}
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
@@ -50,6 +54,7 @@
   width: 400px;
   background: grey;
   top: 0;
+  visibility: hidden;
 }
 
 .message{
