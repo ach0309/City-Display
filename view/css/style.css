@@ -1,4 +1,6 @@
-
+* {
+  background-color: #d0f5f3;
+}
 
 .loader {
   margin: 20px 20px;
@@ -10,16 +12,17 @@
   animation: spin 2s linear infinite;
   display: none;
 }
+
+#loader.active{
+  display: block;
+}
   
   @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
 
-  * {
-    background-color: #d0f5f3;
-  }
-
+  
   input {
     border: 1px solid black;
     width: 200px;
@@ -38,11 +41,39 @@
 }
 
 .modal {
-  background-color: grey;
-  padding: 20px;
-  width: 50% fixed;
-  text-align: center;
-  top: 0;
   position: absolute;
-  display: none;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: left;
+  border: 3px solid grey;
+  padding-left: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  width: 400px;
+  background: grey;
+  top: 0;
+  visibility: hidden;
+}
+
+.message{
+  color: white;
+  background: grey;
+  font-size: 1.3em;
+}
+
+.okay-btn{
+  border: 1px solid white;
+  background: grey;
+  text-align: center;
+  width: 2rem;
+  margin-left: 85%;
+  margin-top: 1rem;
+  padding: 1px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 1rem;
+  cursor: pointer;
 }
