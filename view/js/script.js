@@ -1,85 +1,75 @@
-//<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-var searchInput = document.getElementById('input');
-var button = document.getElementById("btn");
-var box = document.getElementById('modal-box');
-var ok = document.getElementById('okay-btn');
-var load = document.getElementById('loader');
+const inputSearch = document.getElementById('input');
+const btn = document.getElementById('btn');
+const cities = document.getElementById('numCities');
+const loader = document.getElementById('loader');
+const totalCities = document.getElementById('totalCount');
 
 
+//adds loader everytime button is clicked, search DOM for 'this'
+function onClick($this) {
+    loader.classList.add('active');
+    totalCities.classList.add('active');
+    //setTimeout(function(){loader.classList.remove('active')}, 500);
 
-function onClick($this){
-    $("table").children().remove();
     let val = $this.previousElementSibling.value;
-    load.classList.add('active');
-    setTimeout(function(){load.classList.remove('active')}, 1000);
-    setTimeout(function(){validate(val)}, 1000);
+    setTimeout(function(){validate(val)}, 500);
 }
 
-function validate(a){
-    if (/^[a-zA-Z]*$/g.test(searchInput.value) && a!='') {
-        console.log(a);
-        working(a);
-    }
-    else{
-        //notWorking(a);
-        alert("Please provide the valid input");
-    }
-}
-
-
-//Reset table/error message every time a letter is typed
-function okClick($ok){
-    box.style.visibility ='hidden';
-}
-searchInput.addEventListener('input', (event) => {
-    okClick(input);
+//remove table every new input
+inputSearch.addEventListener('input', (event)=>{
+    $("table").children().remove();
+    totalCities.classList.remove('active');
+    
 })
 
-// when not Working
-function notWorking(input){
-    box.style.visibility='visible';
+//validate the input
+function validate(val){
+    if (val!='' && /^[a-zA-Z]*$/.test(inputSearch.value)){
+        working(val);
+    }
+    else {alert('Please provide the valid input')
+    loader.classList.remove('active');
+    totalCities.classList.remove('active');
+    }
+
 }
 
-//when working
-function working(input){
-    //fetch data from JSON URL
-    var jsonResults = [];
-    var stringURL = 'https://jsonmock.hackerrank.com/api/cities/?city=' + input;
 
-     
-    $(function() {
-        $.getJSON(stringURL, function(data) {
-            var items='';
-            var r= data.data;
+// if input is valid
+function working(val){
+    let url = 'https://jsonmock.hackerrank.com/api/cities/?city=' + val;
+    let item = '';
+    
 
-            //get the amount of cities found
-            var valLen = r.length;
-            document.getElementById('numCities').innerHTML = valLen;
+    $(function(){
+        $.getJSON(url, function(data){
+            //console.log(data);
+            var result = data.data;
+            loader.classList.remove('active');
+            var len = result.length;
+            dataObject = {};
+            //number of cities
+            cities.innerHTML= len;
 
-            var dict = {};
-            //create an object {state: [cities]}
-            $.each(r, function(key,value){
-                if (value.state in dict){
-                    dict[value.state].push(value.city);
+            //create object dataObject = {state:cities}
+            $.each(result, function(key,value){
+                if (value.state in dataObject){
+                    dataObject[value.state].push(value.city);
                 } else {
-                    dict[value.state] = [value.city];
+                    dataObject[value.state] = [value.city];
                 }
             });
-
-            //loop through object 
-            $.each(dict, function(key,value){
-                items += '<tr>';
-                items += '<td>' + key + '</td>';
-                //loop through values to get the cities for each key
-                for (let i=0; i<value.length; i++){
-                    items += '<td>'+ value[i] + '</td>';
+            
+            //create table
+            $.each(dataObject, function(key,value){
+                item += "<tr>";
+                item += "<td>" + key + "</td>"
+                for(let i=0; i<value.length; i++){
+                    item+= "<td>" + value[i] + "</td>"
                 }
-                items += '</tr>';
-            });
-        $('#tables').append(items);
-        });
-
-    });
-
+                item += "</tr>";
+            })
+        $('#tables').append(item);    
+        })
+    })
 }

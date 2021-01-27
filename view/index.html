@@ -1,56 +1,28 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <!--Define title-->
-        <title>City Search</title>
-        
-        <!--You can load all the css files here -->
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Display</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!--HTML content goes here-->
+    <input class="input" id="input" type="text"></input>
+    <button onclick = onClick(this) class="button" id="btn">Search</button>    
+  
+     <div class="totalCount" id="totalCount">Total cities found: <span id="numCities"></span></div>
+
+     <div class="loader" id = "loader"></div>
+     
+     <table class="table" id = "tables">
+     </table>
     
-    <body>
-        <!--HTML content goes here-->
-
-        <div class="modal" id="modal-box"> 
-            <span class="message">Please provide the valid input</span> 
-            <button onclick= "okClick(ok)" class="okay-btn">OK</button> 
-        </div>
-        
-        <div class="inputText">
-            <input id="input" class="input" type="text" pattern ="/[a-zA-Z]/"></input>
-            <button onclick="onClick(this)" id = "btn">Search</button>    
-        </div> 
-      
-         <div class="totalCount">Total cities found: 
-             <span id="numCities"></span> 
-        </div>
-
-         <div class="loader" id = "loader"></div>
-         
-         <table class="table" id = "tables">
-            <tbody>
-            </tbody>
-         </table>
-        
-        <!--You can load all the javascript files here-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
-        <script type="text/javascript" src="js/script.js"></script>
-        
-    </body>
+    <!--You can load all the javascript files here-->
+    <!--load JSON data from server using a GET request-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
 </html>
 
 
-
-
-
-
-<!--
-helpful links:
-https://www.youtube.com/watch?v=ru_YWeOh2kU
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/th
-https://css-tricks.com/complete-guide-table-element/
-https://www.geeksforgeeks.org/how-to-fetch-data-from-json-file-and-display-in-html-table-using-jquery/
-
-
-https://www.youtube.com/watch?v=SWkPXbQXArk
--->

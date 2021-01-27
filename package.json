@@ -1,5 +1,5 @@
 {
-  "name": "city-search",
+  "name": "package.json",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -33,5 +33,20 @@
     "request": "^2.88.0",
     "selenium-webdriver": "^3.6.0",
     "serve-favicon": "^2.4.3"
-  }
+  },
+  "description": "testing",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeonchavez/try.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeonchavez/try/issues"
+  },
+  "homepage": "https://github.com/aeonchavez/try#readme"
 }
